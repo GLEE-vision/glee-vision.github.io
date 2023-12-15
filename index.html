@@ -60,7 +60,7 @@
 
     
   </script>
-
+  <script type="module" src="https://gradio.s3-us-west-2.amazonaws.com/3.27.0/gradio.js"></script>
 </head>
 <body>
 
@@ -326,6 +326,12 @@
   </div>
 </section> -->
 
+<!-- <section class="section"  style="background-color:#efeff081">
+  <div class="container is-max-desktop" id="gradio">
+    <gradio-app src="https://huggingface.co/spaces/Junfeng5/GLEE_demo"></gradio-app>
+  </div>
+</section> -->
+
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -451,10 +457,8 @@
           model as an object-level visual foundation model, directly
           applicable to various object-centric tasks while ensuring
           state-of-the-art performance without needing fine-tuning.
-          We compare our approach with existing specialist and generalist models in image-level tasks, including detection, referring expression comprehension, and open-world instance
-          segmentation.  
           </p>
-          <p style="font-size: 20px;">
+          <!-- <p style="font-size: 20px;">
           <b>Zero-shot Transfer to Video Tasks. </b> The proposed GLEE
           is capable of adapting to new data and even new tasks in
           a zero-shot manner, without the need for additional finetuning. We evaluate its zero-shot capability on three largescale, large-vocabulary open-world video tracking datasets:
@@ -462,7 +466,7 @@
           the image-level joint training, which has not been exposed to
           images from these three datasets nor trained on videolevel data.</span> Despite these constraints, GLEE achieves stateof-the-art performance that significantly exceeds existing
           methodologies. 
-          </p>
+          </p> -->
 
 
      
@@ -472,35 +476,25 @@
           <img src="./static/images/imagetask.png" alt="Image 1">
           <figcaption>Comparison of GLEE to recent specialist and generalist models on object-level image tasks.</figcaption>
         </div>
-        <div class="image-box">
+        <!-- <div class="image-box">
           <img src="./static/images/videotask.png" alt="Image 2">
           <figcaption>Comparison of GLEE to recent specialist and generalist models on object-level video tasks in a zero-shot manner.</figcaption>
-        </div>
+        </div> -->
       </div>
 
       <br><br>
 
 
       <p style="font-size: 20px;">
-        <b>Data Scale.</b> We conducted experiments to investigate the impact of
-        training data scale on zero-shot performance across various tasks. To this end, we trained GLEE-Pro with 10%,
+        <b>Data Scale.</b> Train GLEE-Pro with 10%,
         20%, 50%, 100% of the training data to evaluate the performance on zero-shot transfer tasks, including TAO, BURST,
-        OVIS, and YTVIS as illustrated in the Figure. The data
-        scaling experiments reveal that increased sizes of training
-        datasets result in enhanced zero-shot performance across diverse downstream tasks. This outcome implies that larger
-        pre-training datasets are a valuable investment, offering a
-        more effective and adaptable basis for a broad spectrum of
-        downstream tasks.</p>
-      
-      <br>
+        OVIS, and YTVIS. Increased sizes of training
+        datasets result in enhanced zero-shot performance across diverse downstream tasks. </p>
       <p style="font-size: 20px;">  
        <b>Serve as Foundation Model.</b> 
-       
-       To explore whether GLEE can serve as a foundation model
-      for other architectures, we selected LISA for analysis, a mVLLM that combines LLAVA with SAM
-      for reasoning segmentation. We substituted its vision backbone with a frozen, pretrained GLEE-Plus and fed the object queries from GLEE into LLAVA and remove decoder of
+       We substituted LISA vision backbone with a frozen, pretrained GLEE-Plus and fed the object queries from GLEE into LLAVA and remove decoder of
     LISA. We directly dot product the output SEG tokens with
-    GLEE feature map to generate masks. As shown in Figure, after training for the same number of steps, our modified LISA-GLEE achieved comparable results to the original version, demonstrating the versatility of representations
+    GLEE feature map to generate masks. After training for the same number of steps, our modified LISA-GLEE achieved comparable results to the original version, demonstrating the versatility of representations
     from GLEE and its <span class="highlight">effectiveness in serving other models</span>.
 
       </p>
@@ -539,10 +533,10 @@ extracting objects.</figcaption>
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@misc{wu2023GLEE,
-  author= { },
-  title = { },
+  author= {Junfeng Wu, Yi Jiang, Qihao Liu, Zehuan Yuan, Xiang Bai, Song Bai},
+  title = {General Object Foundation Model for Images and Videos at Scale},
   year={2023},
-  eprint={ },
+  eprint={2312.09158},
   archivePrefix={arXiv}
 }</code></pre>
   </div>
